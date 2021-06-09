@@ -1,0 +1,212 @@
+openapi: 3.0.0
+info:
+  title: bacon
+  version: '1.0'
+  description: API de récupération des métadonnées pour le signalement de la documentation électronique
+  contact:
+    name: ABES
+    url: 'https://stp.abes.fr/node/3?origine=Bacon'
+    email: bacon@abes.fr
+  termsOfService: 'https://bacon.abes.fr/mentions_legales.html'
+  license:
+    name: Licence CC0
+    url: 'https://creativecommons.org/publicdomain/zero/1.0/deed.fr'
+servers:
+  - url: 'https://bacon.abes.fr'
+paths:
+  /list:
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-list
+      description: |-
+        Le webservice list renvoie l'ensemble des bouquets, appelés aussi packages, présents dans BACON.
+
+        Il peut, par exemple, être appelé pour vérifier si des bouquets ont été créés ou mis à jour.
+
+        Format par défaut : XML. Utiliser HTTP_ACCEPT pour demander du JSON.
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - application/json
+              - text/json
+          in: header
+          name: HTTP_ACCEPT
+          description: Format JSON
+  '/package2kbart/{Nom_du_package}':
+    parameters:
+      - $ref: '#/components/parameters/Nom_du_package'
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-package2kbart-Package
+      description: |-
+        Le webservice package2kbart permet de remonter l'ensemble des lignes d'un fichier KBART donné.
+
+        Utiliser l'entête HTTP_ACCEPT pour obtenir le format CSV (par défaut), XML ou JSON
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - text/tab-separated-values
+              - application/xml
+              - text/xml
+              - application/json
+              - text/json
+          in: header
+          name: HTTP_ACCEPT
+          description: 'Format demandé : CSV, XML ou JSON'
+  '/id2kbart/{ISSN_ou_ISBN}':
+    parameters:
+      - $ref: '#/components/parameters/ISSN_ou_ISBN'
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-id2kbart-Identifiant
+      description: |-
+        Le webservice id2kbart permet de connaître l'ensemble des packages où figure un périodique ou un livre donné en fonction de son identifiant (ISSN ou ISBN, version « papier » ou version électronique) et remonte l'ensemble des informations KBART correspondantes.
+
+        Format XML (par défaut) ou JSON
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - application/json
+              - text/json
+              - application/xml
+              - text/xml
+          in: header
+          name: HTTP_ACCEPT
+          description: 'Format demandé : XML ou JSON'
+  /list.json:
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-list.json
+      description: |-
+        Le webservice list renvoie l'ensemble des bouquets, appelés aussi packages, présents dans BACON.
+
+        Il peut, par exemple, être appelé pour vérifier si des bouquets ont été créés ou mis à jour.
+
+        Format : JSON
+  /list.xml:
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-list.xml
+      description: |-
+        Le webservice list renvoie l'ensemble des bouquets, appelés aussi packages, présents dans BACON.
+
+        Il peut, par exemple, être appelé pour vérifier si des bouquets ont été créés ou mis à jour.
+
+        Format : XML
+  '/package2kbart/{Nom_du_package}.xml':
+    parameters:
+      - $ref: '#/components/parameters/Nom_du_package'
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-package2kbart-Nom_du_package-.xml
+      description: |-
+        Le webservice package2kbart permet de remonter l'ensemble des lignes d'un fichier KBART donné.
+
+        Format XML
+  '/package2kbart/{Nom_du_package}.json':
+    parameters:
+      - $ref: '#/components/parameters/Nom_du_package'
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-package2kbart-Nom_du_package-.json
+      description: |-
+        Le webservice package2kbart permet de remonter l'ensemble des lignes d'un fichier KBART donné.
+
+        Format JSON
+  '/id2kbart/{ISSN_ou_ISBN}.xml':
+    parameters:
+      - $ref: '#/components/parameters/ISSN_ou_ISBN'
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-id2kbart-ISSN_ou_ISBN-.xml
+      description: |-
+        Le webservice id2kbart permet de connaître l'ensemble des packages où figure un périodique ou un livre donné en fonction de son identifiant (ISSN ou ISBN, version « papier » ou version électronique) et remonte l'ensemble des informations KBART correspondantes.
+
+        Format XML
+  '/id2kbart/{ISSN_ou_ISBN}.json':
+    parameters:
+      - $ref: '#/components/parameters/ISSN_ou_ISBN'
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-id2kbart-ISSN_ou_ISBN-.json
+      description: |-
+        Le webservice id2kbart permet de connaître l'ensemble des packages où figure un périodique ou un livre donné en fonction de son identifiant (ISSN ou ISBN, version « papier » ou version électronique) et remonte l'ensemble des informations KBART correspondantes.
+
+        Format JSON
+components:
+  schemas: {}
+  parameters:
+    Nom_du_package:
+      name: Nom_du_package
+      in: path
+      required: true
+      schema:
+        type: string
+        example: NPG_FRANCE_ISTEXJOURNALS_2018-05-13
+      description: Peut être récupéré grâce au webservice « List »
+    ISSN_ou_ISBN:
+      name: ISSN_ou_ISBN
+      in: path
+      required: true
+      schema:
+        type: string
+        example: '0003-4878 ou plusieurs : 0003-4878,978-0-7923-0647-4'
+      description: 'ISSN ou ISBN, version « papier » ou version électronique'
+  responses: {}

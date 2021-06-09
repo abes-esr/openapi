@@ -1,0 +1,172 @@
+openapi: 3.0.0
+info:
+  title: idref
+  version: '1.0'
+  description: API de récupération des notices d'autorités du Système Universitaire de Documentation (Sudoc) de l'ESR
+  contact:
+    name: ABES
+    url: 'https://stp.abes.fr/node/3?origine=idref'
+    email: idref@abes.fr
+  termsOfService: 'https://www.idref.fr/cgu.jsp'
+  license:
+    name: CeCILL
+    url: 'https://cecill.info/index.en.html'
+servers:
+  - url: 'https://www.idref.fr'
+paths:
+  '/{PPN}':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-PPN
+      parameters:
+        - schema:
+            type: string
+            example: application/xml
+            enum:
+              - application/xml
+              - application/rdf+xml
+          in: header
+          name: HTTP_ACCEPT
+          description: Format demandé
+      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), en MarcXML ou RDF, selon le HTTP_ACCEPT header'
+  '/{PPN}.xml':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers: {}
+        '404':
+          description: Not found
+      operationId: get-PPN-.xml
+      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), au format XML'
+      x-internal: false
+      parameters: []
+  '/{PPN}.rdf':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not found
+      operationId: get-PPN-.rdf
+      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), au format XML'
+  '/services/biblio/{PPN}':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-biblio-PPN
+      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l''header HTTP ou en suffixant avec .json)'
+      parameters:
+        - $ref: '#/components/parameters/HTTP_ACCEPT'
+  '/services/biblio/{PPN}.xml':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-biblio-PPN-.xml
+      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant), en MarcXML'
+  '/services/biblio/{PPN}.json':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-biblio-PPN-.json
+      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant), en JSON'
+  '/services/references/{PPN}':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-references-PPN
+      description: 'Renvoie la liste des références bibliographiques, liées à une notice d''autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l''header HTTP ou en suffixant avec .json)'
+      parameters:
+        - $ref: '#/components/parameters/HTTP_ACCEPT'
+  '/services/references/{PPN}.xml':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-references-PPN-.xml
+      description: 'Renvoie la liste des références bibliographiques, liées à une notice d''autorité correspondant à un PPN (identifiant), en MarcXML'
+  '/services/references/{PPN}.json':
+    parameters:
+      - schema:
+          type: string
+        name: PPN
+        in: path
+        required: true
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-references-PPN-.json
+      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant), en JSON'
+components:
+  schemas: {}
+  securitySchemes: {}
+  parameters:
+    PPN:
+      name: PPN
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '[0-9]{8}[0-9A-Z]{1}'
+        minLength: 9
+        maxLength: 9
+        example: '139753753'
+      description: Identifiant d'une notice
+    HTTP_ACCEPT:
+      name: HTTP_HEADER
+      in: header
+      required: false
+      schema:
+        type: string
+        enum:
+          - application/xml
+          - text/xml
+          - application/json
+          - text/json
+      description: 'Format demandé (XML, JSON)'

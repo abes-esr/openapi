@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  title: sudoc
+  version: '1.0'
+  description: API de récupération des notices bibliographiques du Système Universitaire de Documentation (Sudoc) de l'ESR
+  contact:
+    name: ABES
+    url: 'https://stp.abes.fr/node/3?origine=sudoc'
+    email: sudoc@abes.fr
+  termsOfService: 'http://psi-app-prod.sudoc.abes.fr/~c_psi/psi_gui/html/cgu.html'
+  license:
+    name: CeCILL
+    url: 'https://cecill.info/index.en.html'
+servers:
+  - url: 'https://www.sudoc.fr'
+paths:
+  '/{PPN}':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-PPN
+      parameters:
+        - $ref: '#/components/parameters/HTTP_ACCEPT'
+      description: 'Renvoie une notice bibliographique correspondant à un PPN (identifiant), au format RDF'
+  '/{PPN}.rdf':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not found
+      operationId: get-PPN-.rdf
+      description: 'Renvoie une notice bibliographique correspondant à un PPN (identifiant), au format RDF'
+  '/{PPN}.xml':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers: {}
+        '404':
+          description: Not found
+      operationId: get-PPN-.xml
+      description: 'Renvoie une notice bibliographique correspondant à un PPN (identifiant), au format MarcXML'
+      x-internal: false
+      parameters: []
+  '/services/isbn2ppn/{ISBN}':
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-isbn2ppn
+      description: Ce webservice renvoie un identifiant de notice bibliographique (PPN) à partir d'un ISBN valide
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - text/json
+          in: header
+          name: HTTP_ACCEPT
+          description: Format JSON
+        - $ref: '#/components/parameters/format'
+    parameters:
+      - $ref: '#/components/parameters/ISBN'
+components:
+  schemas: {}
+  parameters:
+    PPN:
+      name: PPN
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '[0-9]{8}[0-9A-Z]{1}'
+        minLength: 9
+        maxLength: 9
+        example: '200479342'
+      description: Identifiant d'une notice
+    HTTP_ACCEPT:
+      name: HTTP_ACCEPT
+      in: header
+      required: false
+      schema:
+        type: string
+        enum:
+          - application/xml
+          - text/xml
+          - application/json
+          - text/json
+      description: 'Format demandé (XML, JSON)'
+    ISBN:
+      name: ISBN
+      in: path
+      required: true
+      schema:
+        type: string
+        example: '0195141156 ou 2-07-037026-7 ou plusieurs : 2-07-037026-7,2-05-100362-9,201000535X'
+      description: Numéro international normalisé du livre
+    format:
+      name: format
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+          - text/json
+        example: text/json
+      description: Format demandé
