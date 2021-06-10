@@ -33,9 +33,9 @@ paths:
               - application/xml
               - application/rdf+xml
           in: header
-          name: HTTP_ACCEPT
+          name: accept
           description: Format demandé
-      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), en MarcXML ou RDF, selon le HTTP_ACCEPT header'
+      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), en MarcXML ou RDF, selon le header HTTP accept'
   '/{PPN}.xml':
     parameters:
       - $ref: '#/components/parameters/PPN'
@@ -76,7 +76,7 @@ paths:
       operationId: get-services-biblio-PPN
       description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l''header HTTP ou en suffixant avec .json)'
       parameters:
-        - $ref: '#/components/parameters/HTTP_ACCEPT'
+        - $ref: '#/components/parameters/accept'
   '/services/biblio/{PPN}.xml':
     parameters:
       - $ref: '#/components/parameters/PPN'
@@ -114,7 +114,7 @@ paths:
       operationId: get-services-references-PPN
       description: 'Renvoie la liste des références bibliographiques, liées à une notice d''autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l''header HTTP ou en suffixant avec .json)'
       parameters:
-        - $ref: '#/components/parameters/HTTP_ACCEPT'
+        - $ref: '#/components/parameters/accept'
   '/services/references/{PPN}.xml':
     parameters:
       - $ref: '#/components/parameters/PPN'
@@ -158,8 +158,8 @@ components:
         maxLength: 9
         example: '139753753'
       description: Identifiant d'une notice
-    HTTP_ACCEPT:
-      name: HTTP_HEADER
+    accept:
+      name: accept
       in: header
       required: false
       schema:

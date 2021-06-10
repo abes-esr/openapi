@@ -29,7 +29,7 @@ paths:
 
         Il peut, par exemple, être appelé pour vérifier si des bouquets ont été créés ou mis à jour.
 
-        Format par défaut : XML. Utiliser HTTP_ACCEPT pour demander du JSON.
+        Format par défaut : XML. Utiliser Header HTTP accept pour demander du JSON.
       parameters:
         - schema:
             type: string
@@ -37,7 +37,7 @@ paths:
               - application/json
               - text/json
           in: header
-          name: HTTP_ACCEPT
+          name: accept
           description: Format JSON
   '/package2kbart/{Nom_du_package}':
     parameters:
@@ -54,7 +54,7 @@ paths:
       description: |-
         Le webservice package2kbart permet de remonter l'ensemble des lignes d'un fichier KBART donné.
 
-        Utiliser l'entête HTTP_ACCEPT pour obtenir le format CSV (par défaut), XML ou JSON
+        Utiliser le header HTTP accept pour obtenir le format CSV (par défaut), XML ou JSON
       parameters:
         - schema:
             type: string
@@ -65,7 +65,7 @@ paths:
               - application/json
               - text/json
           in: header
-          name: HTTP_ACCEPT
+          name: accept
           description: 'Format demandé : CSV, XML ou JSON'
   '/id2kbart/{ISSN_ou_ISBN}':
     parameters:
@@ -92,7 +92,7 @@ paths:
               - application/xml
               - text/xml
           in: header
-          name: HTTP_ACCEPT
+          name: accept
           description: 'Format demandé : XML ou JSON'
   /list.json:
     get:
