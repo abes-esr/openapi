@@ -22,6 +22,10 @@ paths:
       responses:
         '200':
           description: OK
+          headers:
+            'content-type: application/rdf+xml;charset=UTF-8':
+              schema:
+                type: string
         '404':
           description: Not Found
       operationId: get-PPN
@@ -33,9 +37,9 @@ paths:
               - application/xml
               - application/rdf+xml
           in: header
-          name: accept
+          name: Accept
           description: Format demandé
-      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), en MarcXML ou RDF, selon le header HTTP accept'
+      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), en MarcXML ou RDF, selon le header HTTP Accept'
   '/{PPN}.xml':
     parameters:
       - $ref: '#/components/parameters/PPN'
@@ -76,7 +80,7 @@ paths:
       operationId: get-services-biblio-PPN
       description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l''header HTTP ou en suffixant avec .json)'
       parameters:
-        - $ref: '#/components/parameters/accept'
+        - $ref: '#/components/parameters/Accept'
   '/services/biblio/{PPN}.xml':
     parameters:
       - $ref: '#/components/parameters/PPN'
@@ -114,7 +118,7 @@ paths:
       operationId: get-services-references-PPN
       description: 'Renvoie la liste des références bibliographiques, liées à une notice d''autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l''header HTTP ou en suffixant avec .json)'
       parameters:
-        - $ref: '#/components/parameters/accept'
+        - $ref: '#/components/parameters/Accept'
   '/services/references/{PPN}.xml':
     parameters:
       - $ref: '#/components/parameters/PPN'
@@ -158,8 +162,8 @@ components:
         maxLength: 9
         example: '139753753'
       description: Identifiant d'une notice
-    accept:
-      name: accept
+    Accept:
+      name: Accept
       in: header
       required: false
       schema:
