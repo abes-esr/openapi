@@ -41,7 +41,7 @@ paths:
       operationId: get-NNT
       description: 'Renvoie les métadonnées de la thèse correspondant à un NNT (identifiant), au format XML (TEF) ou RDF'
       parameters:
-        - $ref: '#/components/parameters/HTTP_ACCEPT'
+        - $ref: '#/components/parameters/accept'
   '/{numSujet}':
     parameters:
       - $ref: '#/components/parameters/numSujet'
@@ -52,7 +52,7 @@ paths:
       operationId: get-numSujet
       description: 'Renvoie les métadonnées du sujet de thèse en préparation correspondant à un numSujet (identifiant), au format XML (TEF) ou RDF'
       parameters:
-        - $ref: '#/components/parameters/HTTP_ACCEPT'
+        - $ref: '#/components/parameters/accept'
   '/{NNT}.rdf':
     parameters:
       - $ref: '#/components/parameters/NNT'
@@ -179,8 +179,8 @@ components:
         type: string
         pattern: s\d*
       description: Numéro de sujet de thèse en préparation
-    HTTP_ACCEPT:
-      name: HTTP_ACCEPT
+    accept:
+      name: accept
       in: header
       required: false
       schema:

@@ -26,7 +26,7 @@ paths:
           description: Not Found
       operationId: get-PPN
       parameters:
-        - $ref: '#/components/parameters/HTTP_ACCEPT'
+        - $ref: '#/components/parameters/accept'
       description: 'Renvoie une notice bibliographique correspondant à un PPN (identifiant), au format RDF'
   '/{PPN}.rdf':
     parameters:
@@ -72,7 +72,7 @@ paths:
             enum:
               - text/json
           in: header
-          name: HTTP_ACCEPT
+          name: accept
           description: Format JSON
         - $ref: '#/components/parameters/format'
     parameters:
@@ -91,8 +91,8 @@ components:
         maxLength: 9
         example: '200479342'
       description: Identifiant d'une notice
-    HTTP_ACCEPT:
-      name: HTTP_ACCEPT
+    accept:
+      name: accept
       in: header
       required: false
       schema:
