@@ -157,6 +157,70 @@ paths:
           description: Not Found
       operationId: get-numSujet-.bib
       description: 'Renvoie les métadonnées du sujet de thèse en préparation correspondant à un numSujet (identifiant), au format BiTeX'
+  /fr/:
+    get:
+      summary: ''
+      tags: []
+      responses: {}
+      operationId: get-fr
+      description: |-
+        Renvoie les informations sur les thèses de doctorat françaises. 
+        Il s'agit d'une API Solr 1.41 proxifiée : le paramètre "wt" est remplacé par "format" et accepte csv et atom, comme formats supplémentaires.
+
+        Doc API Solr 1.41 : https://svn.apache.org/repos/asf/lucene/solr/tags/release-1.4.1/site/tutorial.html#Querying+Data 
+      parameters:
+        - schema:
+            type: string
+            example: 'zola  ou  num:1985PA100023'
+          in: query
+          name: q
+          description: Critères de recherche
+          required: true
+        - schema:
+            type: string
+            enum:
+              - avancee
+            example: avancee
+          in: query
+          name: type
+          description: 'Obligatoire pour utiliser l''API : type=avancee'
+          required: true
+        - schema:
+            type: string
+            enum:
+              - json
+              - xml
+              - csv
+              - atom
+            example: json
+          in: query
+          name: format
+          description: 'Format retourné : JSON, XML, CSV, ATOM'
+          required: true
+        - schema:
+            type: string
+            example: nomIndex asc   ou  nomIndex desc
+          in: query
+          name: sort
+          description: Tri par index
+        - schema:
+            type: string
+            example: '0'
+          in: query
+          name: start
+          description: Démarre au nième résultat (pour pagination)
+        - schema:
+            type: string
+            example: '10 '
+          in: query
+          name: rows
+          description: Nombre de documents maximum à retourner
+        - schema:
+            type: string
+            example: num ou *
+          in: query
+          name: fl
+          description: Liste des indexes à retourner
 components:
   schemas: {}
   parameters:

@@ -166,7 +166,7 @@ paths:
             example: 'persname_t:zola    ou *:*'
           in: query
           name: q
-          description: Chaîne de recherche
+          description: Critères de recherche
           required: true
         - schema:
             type: string
@@ -200,7 +200,7 @@ paths:
             example: json ou xml
           in: query
           name: wt
-          description: 'Format retourné : XML ou JSON'
+          description: 'Format retourné : XML (par défaut) ou JSON'
 components:
   schemas: {}
   securitySchemes: {}
