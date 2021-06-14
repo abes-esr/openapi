@@ -161,7 +161,11 @@ paths:
     get:
       summary: ''
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
       operationId: get-fr
       description: |-
         Renvoie les informations sur les thèses de doctorat françaises. 
@@ -221,6 +225,21 @@ paths:
           in: query
           name: fl
           description: Liste des indexes à retourner
+        - schema:
+            type: string
+            enum:
+              - 'on'
+              - 'off'
+            example: facet=on&facet.field=discipline
+          in: query
+          name: facet
+          description: Active les facettes dans la réponse. A utiliser avec facet.field
+        - schema:
+            type: string
+            example: facet=on&facet.field=discipline
+          in: query
+          name: facet.field
+          description: Index sur lequel avoir les facettes
 components:
   schemas: {}
   parameters:

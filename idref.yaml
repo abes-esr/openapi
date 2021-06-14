@@ -201,6 +201,21 @@ paths:
           in: query
           name: wt
           description: 'Format retourné : XML (par défaut) ou JSON'
+        - schema:
+            type: string
+            enum:
+              - 'on'
+              - 'off'
+            example: facet=on&facet.field=recordtype_z
+          in: query
+          name: facet
+          description: Active les facettes dans la réponse. A utiliser avec facet.field
+        - schema:
+            type: string
+            example: facet=on&facet.field=recordtype_z
+          in: query
+          name: facet.field
+          description: Index sur lequel avoir les facettes
 components:
   schemas: {}
   securitySchemes: {}
