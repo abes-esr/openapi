@@ -147,6 +147,60 @@ paths:
           description: Not Found
       operationId: get-services-references-PPN-.json
       description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant), en JSON'
+  /Sru/Solr:
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-Sru-Solr
+      description: |-
+        Renvoie les informations sur les notices d'autorités du Système Universitaire de Documentation (Sudoc). 
+        Il s'agit d'une API Solr 1.41 : https://svn.apache.org/repos/asf/lucene/solr/tags/release-1.4.1/site/tutorial.html#Querying+Data
+      parameters:
+        - schema:
+            type: string
+            example: 'persname_t:zola    ou *:*'
+          in: query
+          name: q
+          description: Chaîne de recherche
+          required: true
+        - schema:
+            type: string
+            example: nomIndex asc   ou nomIndex desc
+          in: query
+          name: sort
+          description: Tri par index
+        - schema:
+            type: string
+            example: '0'
+          in: query
+          name: start
+          description: Démarre au nième résultat (pour pagination)
+        - schema:
+            type: string
+            example: '10'
+          in: query
+          name: rows
+          description: Nombre de documents maximum à retourner
+        - schema:
+            type: string
+            example: 'id,ppn_z,recordtype_z,affcourt_z   ou *'
+          in: query
+          name: fl
+          description: Liste des indexes à retourner
+        - schema:
+            type: string
+            enum:
+              - json
+              - xml
+            example: json ou xml
+          in: query
+          name: wt
+          description: 'Format retourné : XML ou JSON'
 components:
   schemas: {}
   securitySchemes: {}
