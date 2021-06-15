@@ -175,7 +175,7 @@ paths:
       parameters:
         - schema:
             type: string
-            example: zola
+            example: '*:*'
           in: query
           name: q
           description: Critères de recherche
@@ -215,7 +215,7 @@ paths:
           description: Démarre au nième résultat (pour pagination)
         - schema:
             type: string
-            example: '30 '
+            example: '30'
           in: query
           name: rows
           description: Nombre de documents maximum à retourner
