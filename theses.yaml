@@ -175,7 +175,7 @@ paths:
       parameters:
         - schema:
             type: string
-            example: 'zola  ou  num:1985PA100023'
+            example: zola
           in: query
           name: q
           description: Critères de recherche
@@ -196,14 +196,14 @@ paths:
               - xml
               - csv
               - atom
-            example: json
+            example: xml
           in: query
           name: format
           description: 'Format retourné : JSON, XML, CSV, ATOM'
           required: true
         - schema:
             type: string
-            example: nomIndex asc   ou  nomIndex desc
+            example: num asc
           in: query
           name: sort
           description: Tri par index
@@ -215,13 +215,13 @@ paths:
           description: Démarre au nième résultat (pour pagination)
         - schema:
             type: string
-            example: '10 '
+            example: '30 '
           in: query
           name: rows
           description: Nombre de documents maximum à retourner
         - schema:
             type: string
-            example: num ou *
+            example: '*'
           in: query
           name: fl
           description: Liste des indexes à retourner
@@ -230,13 +230,13 @@ paths:
             enum:
               - 'on'
               - 'off'
-            example: facet=on&facet.field=discipline
+            example: 'on'
           in: query
           name: facet
           description: Active les facettes dans la réponse. A utiliser avec facet.field
         - schema:
             type: string
-            example: facet=on&facet.field=discipline
+            example: discipline
           in: query
           name: facet.field
           description: Index sur lequel avoir les facettes
@@ -261,6 +261,7 @@ components:
       schema:
         type: string
         pattern: s\d*
+        example: s279863
       description: Numéro de sujet de thèse en préparation
     Accept:
       name: Accept
@@ -271,4 +272,5 @@ components:
         enum:
           - application/xml
           - application/rdf+xml
+        example: application/xml
       description: 'Format demandé (XML, RDF)'

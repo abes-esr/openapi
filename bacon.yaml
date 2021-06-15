@@ -36,6 +36,7 @@ paths:
             enum:
               - application/json
               - text/json
+            example: application/json
           in: header
           name: Accept
           description: Format JSON
@@ -64,6 +65,7 @@ paths:
               - text/xml
               - application/json
               - text/json
+            example: application/json
           in: header
           name: Accept
           description: 'Format demandé : CSV, XML ou JSON'
@@ -91,6 +93,7 @@ paths:
               - text/json
               - application/xml
               - text/xml
+            example: application/json
           in: header
           name: Accept
           description: 'Format demandé : XML ou JSON'
@@ -207,6 +210,6 @@ components:
       required: true
       schema:
         type: string
-        example: '0003-4878 ou plusieurs : 0003-4878,978-0-7923-0647-4'
+        example: '0003-4878,978-0-7923-0647-4'
       description: 'ISSN ou ISBN, version « papier » ou version électronique'
   responses: {}

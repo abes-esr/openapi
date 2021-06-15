@@ -71,6 +71,7 @@ paths:
             type: string
             enum:
               - text/json
+            example: text/json
           in: header
           name: Accept
           description: Format JSON
@@ -90,7 +91,7 @@ components:
         minLength: 9
         maxLength: 9
         example: '200479342'
-      description: Identifiant d'une notice
+      description: Identifiant d'une notice bibliographique
     Accept:
       name: Accept
       in: header
@@ -102,6 +103,7 @@ components:
           - text/xml
           - application/json
           - text/json
+        example: application/xml
       description: 'Format demandé (XML, JSON)'
     ISBN:
       name: ISBN
@@ -109,7 +111,7 @@ components:
       required: true
       schema:
         type: string
-        example: '0195141156 ou 2-07-037026-7 ou plusieurs : 2-07-037026-7,2-05-100362-9,201000535X'
+        example: '2-07-037026-7,2-05-100362-9,201000535X'
       description: Numéro international normalisé du livre
     format:
       name: format
