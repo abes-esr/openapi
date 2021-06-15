@@ -163,14 +163,14 @@ paths:
       parameters:
         - schema:
             type: string
-            example: 'persname_t:zola    ou *:*'
+            example: '*:*'
           in: query
           name: q
           description: Critères de recherche
           required: true
         - schema:
             type: string
-            example: nomIndex asc   ou nomIndex desc
+            example: ppn_z asc
           in: query
           name: sort
           description: Tri par index
@@ -188,7 +188,7 @@ paths:
           description: Nombre de documents maximum à retourner
         - schema:
             type: string
-            example: 'id,ppn_z,recordtype_z,affcourt_z   ou *'
+            example: '*'
           in: query
           name: fl
           description: Liste des indexes à retourner
@@ -197,7 +197,7 @@ paths:
             enum:
               - json
               - xml
-            example: json ou xml
+            example: json
           in: query
           name: wt
           description: 'Format retourné : XML (par défaut) ou JSON'
@@ -206,13 +206,13 @@ paths:
             enum:
               - 'on'
               - 'off'
-            example: facet=on&facet.field=recordtype_z
+            example: 'on'
           in: query
           name: facet
           description: Active les facettes dans la réponse. A utiliser avec facet.field
         - schema:
             type: string
-            example: facet=on&facet.field=recordtype_z
+            example: recordtype_z
           in: query
           name: facet.field
           description: Index sur lequel avoir les facettes
@@ -230,7 +230,7 @@ components:
         minLength: 9
         maxLength: 9
         example: '139753753'
-      description: Identifiant d'une notice
+      description: Identifiant d'une notice d'autorité
     Accept:
       name: Accept
       in: header
@@ -242,4 +242,5 @@ components:
           - text/xml
           - application/json
           - text/json
+        example: application/xml
       description: 'Format demandé (XML, JSON)'
