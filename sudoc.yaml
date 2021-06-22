@@ -78,6 +78,38 @@ paths:
         - $ref: '#/components/parameters/format'
     parameters:
       - $ref: '#/components/parameters/ISBN'
+  '/services/issn2ppn/{ISSN}':
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      operationId: get-issn2ppn
+      description: |
+        Ce webservice renvoie un identifiant de notice bibliographique (PPN) à partir d'un ISSN valide.
+         
+        <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#issn2ppn">Lien vers la documentation</a>
+
+        Ex. : 
+
+        <a href="https://www.sudoc.fr/services/issn2ppn/0774-3122" target="_blank">https://www.sudoc.fr/services/issn2ppn/0774-3122</a>
+
+        <a href="https://www.sudoc.fr/services/issn2ppn/02672472,08581665,0296-2454,1242-9449,1242-9449&format=text/json" target=_blank>https://www.sudoc.fr/services/issn2ppn/02672472,08581665,0296-2454,1242-9449,1242-9449&format=text/json</a>
+      parameters:
+        - $ref: '#/components/parameters/Accept'
+        - $ref: '#/components/parameters/format'
+    parameters:
+      - $ref: '#/components/parameters/ISSN'
 components:
   schemas: {}
   parameters:
@@ -123,3 +155,14 @@ components:
           - text/json
         example: text/json
       description: Format demandé
+    ISSN:
+      name: ISSN
+      in: path
+      schema:
+        type: string
+        example: 1940-5758
+        pattern: '\d{4}\-?\d{3}(\d|x|X)'
+        minLength: 8
+        maxLength: 9
+      description: Identifiant international d'une publication en série
+      required: true
