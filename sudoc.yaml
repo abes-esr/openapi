@@ -65,7 +65,15 @@ paths:
         '404':
           description: Not Found
       operationId: get-services-isbn2ppn
-      description: Ce webservice renvoie un identifiant de notice bibliographique (PPN) à partir d'un ISBN valide
+      description: |-
+        Ce webservice renvoie un identifiant de notice bibliographique (PPN) à partir d'un ISBN valide
+
+        <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#isbn2ppn" target=_blank>Lien vers la documentation</a>
+
+        Exemple :
+
+        https://www.sudoc.fr/services/isbn2ppn/2-07-037026-7
+        https://www.sudoc.fr/services/isbn2ppn/2-07-037026-7,2-05-100362-9,201000535X
       parameters:
         - schema:
             type: string
@@ -87,13 +95,6 @@ paths:
           description: OK
         '404':
           description: Not Found
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties: {}
       operationId: get-issn2ppn
       description: |
         Ce webservice renvoie un identifiant de notice bibliographique (PPN) à partir d'un ISSN valide.
@@ -110,6 +111,76 @@ paths:
         - $ref: '#/components/parameters/format'
     parameters:
       - $ref: '#/components/parameters/ISSN'
+  '/services/ean2ppn/{EAN}':
+    parameters:
+      - $ref: '#/components/parameters/EAN'
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-ean2ppn-EAN
+      description: |-
+        Ce webservice renvoie un identifiant de notice bibliographique (PPN) à partir d'un EAN valide
+
+        <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#ean2ppn" target=_blank>Lien vers la documentation</a>
+
+        Exemple :
+
+        https://www.sudoc.fr/services/ean2ppn/9782726600078
+        https://www.sudoc.fr/services/ean2ppn/9782726600078,9782204015899,9782222024507
+      parameters:
+        - $ref: '#/components/parameters/format'
+        - $ref: '#/components/parameters/Accept'
+  '/services/frbn2ppn/{FRBN}':
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-frbn2ppn
+      description: |-
+        Ce webservice renvoie le PPN (identifiant d'une notice bibliographique dans le Sudoc) correspondant à une notice de la BnF (FRBNF).
+
+        <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#MicroWebServiceFrbn2ppn" target=_blank>Lien vers la documentation</a>
+
+        https://www.sudoc.fr/services/frbn2ppn/00000004X
+
+        https://www.sudoc.fr/services/frbn2ppn/00000004X,00000051X
+      parameters:
+        - $ref: '#/components/parameters/Accept'
+        - $ref: '#/components/parameters/format'
+    parameters:
+      - $ref: '#/components/parameters/FRBN'
+  '/services/dnb2ppn/{DNB}':
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-dnb2ppn
+      description: |-
+        Ce webservice renvoie le PPN (identifiant d'une notice bibliographique dans le Sudoc) correspondant à une notice de la Deutsche Nationalbibliothek (DNB).
+
+        <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#MicroWebServiceDnb2ppn" target=_blank>Lien vers la documentation</a>
+
+        https://www.sudoc.fr/services/dnb2ppn/015130681
+
+        https://www.sudoc.fr/services/dnb2ppn/015130681,100024797X
+      parameters:
+        - $ref: '#/components/parameters/format'
+        - $ref: '#/components/parameters/Accept'
+    parameters:
+      - $ref: '#/components/parameters/DNB'
 components:
   schemas: {}
   parameters:
@@ -119,7 +190,7 @@ components:
       required: true
       schema:
         type: string
-        pattern: '[0-9]{8}[0-9A-Z]{1}'
+        pattern: '([0-9X]{9})(,$1)*'
         minLength: 9
         maxLength: 9
         example: '200479342'
@@ -161,8 +232,36 @@ components:
       schema:
         type: string
         example: 1940-5758
-        pattern: '\d{4}\-?\d{3}(\d|x|X)'
+        pattern: '(\d{4}\-?\d{3}(\d|x|X))(,$1)*'
         minLength: 8
-        maxLength: 9
       description: Identifiant international d'une publication en série
       required: true
+    EAN:
+      name: EAN
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '(\d{13})(,$1)*'
+        example: '9782726600078'
+        minLength: 13
+      description: Identifiant commercial
+    DNB:
+      name: DNB
+      in: path
+      schema:
+        type: string
+        example: '015130681'
+        pattern: '(\d{9})(,$1)*'
+        minLength: 9
+      description: Identifiant d'une notice dans le catalogue de la Deutsche NationalBibliothek
+      required: true
+    FRBN:
+      name: FRBN
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '(\d{8,9}[0-9bcdfghjkmnpqrstvwxz])(,$1)*'
+        minLength: 8
+      description: Identifiant d'une notice dans le catalogue général de la BnF
