@@ -269,13 +269,6 @@ paths:
     get:
       summary: ''
       tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not Found
-        '':
-          description: OK
       operationId: get-services-listisil
       description: |-
         Le webservice listrcrisil illustre l'activité de l'Abes en tant qu'agence nationale d'attribution des ISIL (International Standard for Library Identifiers) : il renvoie un fichier excel (.xls) avec la liste de tous les identifiants actifs pour les bibliothèques françaises.
@@ -287,6 +280,12 @@ paths:
         Le fichier csv comporte : n°ISIL, ILN de rattachement, intitulé court de la bibliothèque.
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
     parameters: []
   /services/listrcr:
     get:
