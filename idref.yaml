@@ -348,7 +348,7 @@ paths:
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/services/idref2id/{PPN}':
     get:
-      summary: Your GET endpoint
+      summary: ''
       tags: []
       responses:
         '200':
@@ -373,6 +373,34 @@ paths:
         - $ref: '#/components/parameters/format'
     parameters:
       - $ref: '#/components/parameters/PPN'
+  '/services/id2idref/{ID}':
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-id2idref
+      description: |-
+        A partir de l'identifiant d'une personne ou d'une collectivité dans un autre système (BnF, Hal,Orcid,Viaf,Isni,etc.) : obtenir le numéro PPN associé.
+
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWeb_ServiceId2idref" target=_blank>Lien vers la documentation</a>
+
+        Exemples:
+
+        https://www.idref.fr/services/id2idref/http://viaf.org/viaf/71387829
+        https://www.idref.fr/services/id2idref/https://fr.wikipedia.org/wiki/Pierre_Bourdieu,000000024000807X
+
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+      parameters:
+        - $ref: ./sudoc.yaml#/components/parameters/Accept
+        - $ref: '#/components/parameters/format'
+    parameters:
+      - $ref: '#/components/parameters/ID'
 components:
   schemas: {}
   securitySchemes: {}
@@ -410,3 +438,10 @@ components:
         enum:
           - text/json
       description: Format demandé
+    ID:
+      name: ID
+      in: path
+      required: true
+      schema:
+        type: string
+      description: 'Identifiant de personne ou de collectivité dans d''autres référentiels (BnF,Hal,Orcid,Viaf,etc.)'
