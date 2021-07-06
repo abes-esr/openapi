@@ -44,6 +44,10 @@ paths:
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#FormatRdf" target=_blank>Lien vers la documentation</a>
 
+        Exemple:
+
+        https://www.idref.fr/027182800
+
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/{PPN}.xml':
     parameters:
@@ -61,6 +65,10 @@ paths:
         Renvoie une notice d'autorité correspondant à un PPN (identifiant), au format XML
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#format" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/027182800.xml
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       x-internal: false
@@ -81,6 +89,10 @@ paths:
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#FormatRdf" target=_blank>Lien vers la documentation</a>
 
+        Exemple:
+
+        https://www.idref.fr/027182800.rdf
+
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/services/biblio/{PPN}':
     parameters:
@@ -97,6 +109,10 @@ paths:
         Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d'autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l'header HTTP ou en suffixant avec .json)
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebBiblio" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/services/biblio/027182800
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       parameters:
@@ -117,6 +133,10 @@ paths:
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebBiblio" target=_blank>Lien vers la documentation</a>
 
+        Exemple:
+
+        https://www.idref.fr/services/biblio/027182800.xml
+
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/services/biblio/{PPN}.json':
     parameters:
@@ -134,6 +154,10 @@ paths:
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebBiblio" target=_blank>Lien vers la documentation</a>
 
+        Exemple:
+
+        https://www.idref.fr/services/biblio/027182800.json
+
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/services/references/{PPN}':
     parameters:
@@ -150,6 +174,10 @@ paths:
         Renvoie la liste des références bibliographiques, liées à une notice d'autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l'header HTTP ou en suffixant avec .json)
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebReferences" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/services/references/02686018X
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       parameters:
@@ -169,6 +197,10 @@ paths:
         Renvoie la liste des références bibliographiques, liées à une notice d'autorité correspondant à un PPN (identifiant), en MarcXML
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebReferences" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/services/references/02686018X.xml
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/services/references/{PPN}.json':
@@ -191,6 +223,10 @@ paths:
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebReferences" target=_blank>Lien vers la documentation</a>
 
+        Exemple:
+
+        https://www.idref.fr/services/references/02686018X.json
+
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   /Sru/Solr:
     get:
@@ -207,6 +243,12 @@ paths:
         Il s'agit d'une API Solr 1.41 : https://svn.apache.org/repos/asf/lucene/solr/tags/release-1.4.1/site/tutorial.html#Querying+Data
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#UtiliserApiSolr" target=_blank>Lien vers la documentation</a>
+
+        Exemples :
+
+        <a href="https://www.idref.fr/Sru/Solr?q=persname_t:(Bourdieu AND Pierre)&sort=score%20desc&version=2.2&start=0&rows=30&indent=on&fl=id,ppn_z,recordtype_z,affcourt_z" target=_blank>Exemple 1</a>
+
+        <a href="https://www.idref.fr/Sru/Solr?q=persname_t:pepin&sort=score%20desc&version=2.2&start=0&rows=30&indent=on&fl=id,ppn_z,recordtype_z,affcourt_z" target=_blank>Exemple 2</a>
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       parameters:
@@ -277,7 +319,7 @@ paths:
 
         Le numéro ISIL est construit sur le numéro RCR, précédé du préfixe « FR-».
 
-        Le fichier csv comporte : n°ISIL, ILN de rattachement, intitulé court de la bibliothèque.
+        Le fichier csv comporte : n°RCR, n°ISIL, intitulé court de la bibliothèque.
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       parameters: []
@@ -304,6 +346,33 @@ paths:
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#listrcr" target=_blank>Lien vers la documentation</a>
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+  '/services/idref2id/{PPN}':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-idref2id
+      description: |-
+        A partir d'un PPN de personne ou de collectivité : obtenir la liste des identifiants d'autres systèmes alignés (BnF, Hal,Orcid,Viaf,Isni,etc.)
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebIdref2id" target=_blank>Lien vers la documentation</a>
+
+        Exemples :
+
+        https://www.idref.fr/services/idref2id/027715078
+        https://www.idref.fr/services/idref2id/159123984,027715078,139753753
+
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+      parameters:
+        - $ref: '#/components/parameters/Accept'
+        - $ref: '#/components/parameters/format'
+    parameters:
+      - $ref: '#/components/parameters/PPN'
 components:
   schemas: {}
   securitySchemes: {}
@@ -332,3 +401,12 @@ components:
           - text/json
         example: application/xml
       description: 'Format demandé (XML, JSON)'
+    format:
+      name: format
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+          - text/json
+      description: Format demandé
