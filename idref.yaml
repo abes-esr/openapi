@@ -39,7 +39,12 @@ paths:
           in: header
           name: Accept
           description: Format demandé
-      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), en MarcXML ou RDF, selon le header HTTP Accept'
+      description: |-
+        Renvoie une notice d'autorité correspondant à un PPN (identifiant), en MarcXML ou RDF, selon le header HTTP Accept
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#FormatRdf" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/{PPN}.xml':
     parameters:
       - $ref: '#/components/parameters/PPN'
@@ -52,7 +57,12 @@ paths:
         '404':
           description: Not found
       operationId: get-PPN-.xml
-      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), au format XML'
+      description: |-
+        Renvoie une notice d'autorité correspondant à un PPN (identifiant), au format XML
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#format" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       x-internal: false
       parameters: []
   '/{PPN}.rdf':
@@ -66,7 +76,12 @@ paths:
         '404':
           description: Not found
       operationId: get-PPN-.rdf
-      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), au format XML'
+      description: |-
+        Renvoie une notice d'autorité correspondant à un PPN (identifiant), au format RDF
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#FormatRdf" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/services/biblio/{PPN}':
     parameters:
       - $ref: '#/components/parameters/PPN'
@@ -78,7 +93,12 @@ paths:
         '404':
           description: Not Found
       operationId: get-services-biblio-PPN
-      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l''header HTTP ou en suffixant avec .json)'
+      description: |-
+        Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d'autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l'header HTTP ou en suffixant avec .json)
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebBiblio" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       parameters:
         - $ref: '#/components/parameters/Accept'
   '/services/biblio/{PPN}.xml':
@@ -92,7 +112,12 @@ paths:
         '404':
           description: Not Found
       operationId: get-services-biblio-PPN-.xml
-      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant), en MarcXML'
+      description: |-
+        Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d'autorité correspondant à un PPN (identifiant), en MarcXML
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebBiblio" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/services/biblio/{PPN}.json':
     parameters:
       - $ref: '#/components/parameters/PPN'
@@ -104,7 +129,12 @@ paths:
         '404':
           description: Not Found
       operationId: get-services-biblio-PPN-.json
-      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant), en JSON'
+      description: |-
+        Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d'autorité correspondant à un PPN (identifiant), en JSON
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebBiblio" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/services/references/{PPN}':
     parameters:
       - $ref: '#/components/parameters/PPN'
@@ -116,7 +146,12 @@ paths:
         '404':
           description: Not Found
       operationId: get-services-references-PPN
-      description: 'Renvoie la liste des références bibliographiques, liées à une notice d''autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l''header HTTP ou en suffixant avec .json)'
+      description: |-
+        Renvoie la liste des références bibliographiques, liées à une notice d'autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l'header HTTP ou en suffixant avec .json)
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebReferences" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       parameters:
         - $ref: '#/components/parameters/Accept'
   '/services/references/{PPN}.xml':
@@ -130,7 +165,12 @@ paths:
         '404':
           description: Not Found
       operationId: get-services-references-PPN-.xml
-      description: 'Renvoie la liste des références bibliographiques, liées à une notice d''autorité correspondant à un PPN (identifiant), en MarcXML'
+      description: |-
+        Renvoie la liste des références bibliographiques, liées à une notice d'autorité correspondant à un PPN (identifiant), en MarcXML
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebReferences" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/services/references/{PPN}.json':
     parameters:
       - schema:
@@ -146,7 +186,12 @@ paths:
         '404':
           description: Not Found
       operationId: get-services-references-PPN-.json
-      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant), en JSON'
+      description: |-
+        Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d'autorité correspondant à un PPN (identifiant), en JSON
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebReferences" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   /Sru/Solr:
     get:
       summary: ''
@@ -160,6 +205,10 @@ paths:
       description: |-
         Renvoie les informations sur les notices d'autorités du Système Universitaire de Documentation (Sudoc). 
         Il s'agit d'une API Solr 1.41 : https://svn.apache.org/repos/asf/lucene/solr/tags/release-1.4.1/site/tutorial.html#Querying+Data
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#UtiliserApiSolr" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       parameters:
         - schema:
             type: string
@@ -216,6 +265,46 @@ paths:
           in: query
           name: facet.field
           description: Index sur lequel avoir les facettes
+  /services/listrcrisil:
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+        '':
+          description: OK
+      operationId: get-services-listisil
+      description: |-
+        Le webservice listrcrisil illustre l'activité de l'Abes en tant qu'agence nationale d'attribution des ISIL (International Standard for Library Identifiers) : il renvoie un fichier excel (.xls) avec la liste de tous les identifiants actifs pour les bibliothèques françaises.
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#listrcr" target=_blank>Lien vers la documentation</a>
+
+        Le numéro ISIL est construit sur le numéro RCR, précédé du préfixe « FR-».
+
+        Le fichier csv comporte : n°ISIL, ILN de rattachement, intitulé court de la bibliothèque.
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+    parameters: []
+  /services/listrcr:
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-listrcr
+      description: |-
+        Le Webservice listrcr renvoie dans un fichier excel (.xls) la liste des RCR actifs ayant une notice RCR (autorité-centre de ressources) : il permet d'établir les correspondances entre les n° RCR (identifiant d'une bibliothèque physique) et les intitulés des établissements membres des réseaux Sudoc / Sudoc PS
+        Le fichier comporte : n°RCR, intitulé court de la bibliothèque, ILN de rattachement, n°PPN de la notice de centre de ressources.
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#listrcr" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
 components:
   schemas: {}
   securitySchemes: {}
