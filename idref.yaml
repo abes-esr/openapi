@@ -403,11 +403,7 @@ paths:
       - $ref: '#/components/parameters/ID'
   '/services/iln2rcr/{ILN}':
     parameters:
-      - schema:
-          type: string
-        name: ILN
-        in: path
-        required: true
+      - $ref: '#/components/parameters/ILN'
     get:
       summary: ''
       tags: []
