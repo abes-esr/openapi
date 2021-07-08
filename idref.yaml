@@ -26,7 +26,7 @@ paths:
       operationId: get-Sru-Solr
       description: |-
         Renvoie les informations sur les notices d'autorités du Système Universitaire de Documentation (Sudoc). 
-        Il s'agit d'une API Solr 1.41 : https://svn.apache.org/repos/asf/lucene/solr/tags/release-1.4.1/site/tutorial.html#Querying+Data
+        Il s'agit d'une <a href="https://svn.apache.org/repos/asf/lucene/solr/tags/release-1.4.1/site/tutorial.html#Querying+Data" target="_blank">API Solr 1.41</a>
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#UtiliserApiSolr" target=_blank>Lien vers la documentation</a>
 
