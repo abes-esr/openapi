@@ -9,8 +9,8 @@ info:
     email: sudoc@abes.fr
   termsOfService: 'http://psi-app-prod.sudoc.abes.fr/~c_psi/psi_gui/html/cgu.html'
   license:
-    name: CeCILL
-    url: 'https://cecill.info/index.en.html'
+    name: Licence Ouverte Etalab
+    url: 'https://www.etalab.gouv.fr/licence-ouverte-open-licence'
 servers:
   - url: 'https://www.sudoc.fr'
 paths:
@@ -106,80 +106,6 @@ paths:
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                description: ''
-                type: object
-                x-examples:
-                  example-1:
-                    sudoc:
-                      query:
-                        isbn: 2-07-037026-7
-                        result:
-                          - ppn: 00021650X
-                          - ppn: '007148747'
-                          - ppn: '008518912'
-                        resultNoHolding:
-                          - ppn: '003640507'
-                          - ppn: '060933356'
-                          - ppn: '075250543'
-                properties:
-                  sudoc:
-                    type: object
-                    required:
-                      - query
-                    properties:
-                      query:
-                        type: object
-                        required:
-                          - isbn
-                          - result
-                          - resultNoHolding
-                        properties:
-                          isbn:
-                            type: string
-                            minLength: 1
-                          result:
-                            type: array
-                            items: {}
-                          resultNoHolding:
-                            type: array
-                            uniqueItems: true
-                            minItems: 1
-                            items:
-                              type: object
-                              properties:
-                                ppn:
-                                  type: string
-                                  minLength: 1
-                              required:
-                                - ppn
-                required:
-                  - sudoc
-              examples:
-                example-1:
-                  value:
-                    sudoc:
-                      query:
-                        isbn: 2-07-037026-7
-                        result:
-                          - ppn: 00021650X
-                          - ppn: '007148747'
-                          - ppn: '008518912'
-                        resultNoHolding:
-                          - ppn: '003640507'
-                          - ppn: '060933356'
-                          - ppn: '075250543'
-                example-2:
-                  value:
-                    sudoc:
-                      query:
-                        isbn: string
-                        result:
-                          - ppn: string
-                        resultNoHolding:
-                          - ppn: string
         '404':
           description: Not Found
       operationId: get-services-isbn2ppn
@@ -193,6 +119,7 @@ paths:
         Exemples :
 
         https://www.sudoc.fr/services/isbn2ppn/2-07-037026-7
+
         https://www.sudoc.fr/services/isbn2ppn/2-07-037026-7,2-05-100362-9,201000535X
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
@@ -226,6 +153,7 @@ paths:
         Exemples : 
 
         <a href="https://www.sudoc.fr/services/issn2ppn/0774-3122" target="_blank">https://www.sudoc.fr/services/issn2ppn/0774-3122</a>
+
         <a href="https://www.sudoc.fr/services/issn2ppn/02672472,08581665,0296-2454,1242-9449,1242-9449&format=text/json" target=_blank>https://www.sudoc.fr/services/issn2ppn/02672472,08581665,0296-2454,1242-9449,1242-9449&format=text/json</a>
 
 
@@ -255,6 +183,7 @@ paths:
         Exemples :
 
         https://www.sudoc.fr/services/ean2ppn/9782726600078
+
         https://www.sudoc.fr/services/ean2ppn/9782726600078,9782204015899,9782222024507
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
@@ -279,6 +208,7 @@ paths:
         Exemples :
 
         https://www.sudoc.fr/services/frbn2ppn/00000004X
+
         https://www.sudoc.fr/services/frbn2ppn/00000004X,00000051X
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
@@ -305,6 +235,7 @@ paths:
         Exemples:
 
         https://www.sudoc.fr/services/dnb2ppn/015130681
+
         https://www.sudoc.fr/services/dnb2ppn/015130681,100024797X
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
@@ -333,6 +264,7 @@ paths:
         Exemples:
 
         https://www.sudoc.fr/services/ocn2ppn/10002646
+
         https://www.sudoc.fr/services/ocn2ppn/10002646,10006281
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
@@ -359,6 +291,7 @@ paths:
         Exemples:
 
         https://www.sudoc.fr/services/ucatb2ppn/10011536
+
         https://www.sudoc.fr/services/ucatb2ppn/10011536,10037641
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
@@ -386,9 +319,11 @@ paths:
         Exemples:
 
         https://www.sudoc.fr/services/frcairninfo2ppn/DBU_ADRIE_2008_01
+
         https://www.sudoc.fr/services/frcairninfo2ppn/DBU_ADRIE_2008_01,DBU_ALTET_2002_01
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+      x-internal: true
     parameters:
       - $ref: '#/components/parameters/FRCAIRN'
   '/services/multiwhere/{PPN}':
@@ -413,6 +348,7 @@ paths:
         Exemples :
 
         https://www.sudoc.fr/services/multiwhere/144089661
+
         https://www.sudoc.fr/services/multiwhere/144089661,154923206
 
         Le retour comporte la géolocalisation (latitude et longitude) du centre de ressources, ainsi que son nom et son identifiant RCR.
@@ -447,6 +383,32 @@ paths:
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       parameters: []
+  '/services/metaperiodical/{PPN}.gexf':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-metaperiodical-PPN-.gexf
+      description: |-
+        Le webservice génère l'historique complet - électronique et papier - d'une revue à partir d'un PPN donné au format gexf.
+
+        On appelle "métarevue", l'ensemble des titres qui constitue un périodique depuis sa naissance.
+
+
+        <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#metarevues" target="_blank">Lien vers la documentation</a>
+
+        Exemple :
+
+        https://www.sudoc.fr/services/metaperiodical/077519922.gexf
+
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/services/pcp2rcr/{PCP}':
     parameters:
       - $ref: '#/components/parameters/PCP'

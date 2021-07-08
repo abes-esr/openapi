@@ -9,8 +9,8 @@ info:
     email: theses@abes.fr
   termsOfService: 'http://www.theses.fr/conditions.html'
   license:
-    name: CeCILL
-    url: 'https://cecill.info/index.en.html'
+    name: Licence Ouverte Etalab
+    url: 'https://www.etalab.gouv.fr/licence-ouverte-open-licence'
 servers:
   - url: 'https://www.theses.fr'
 paths:
@@ -26,10 +26,19 @@ paths:
         '404':
           description: Not Found
       operationId: get-NNT-document
-      description: Renvoie le document plein texte d'une thèse correspondant à un NNT (identifiant)
-  '/{NNT}':
+      description: |-
+        Renvoie vers le document plein texte d'une thèse correspondant à un NNT (identifiant d'une thèse soutenue), pour peu que l'auteur ait fait le choix d'une diffusion ouverte.
+
+        <a href="http://documentation.abes.fr/aidetheses/thesesfr/index.html#RecupererDonneesAPI" target=_blank>Lien vers la documentation</a>
+
+        Exemple :
+
+        http://theses.fr/2020GRALU020/document
+
+        Tous droits réservés.
+  '/{NNT_ou_numSujet}':
     parameters:
-      - $ref: '#/components/parameters/NNT'
+      - $ref: '#/components/parameters/NNT_ou_numSujet'
     get:
       summary: ''
       tags: []
@@ -39,23 +48,24 @@ paths:
         '404':
           description: Not Found
       operationId: get-NNT
-      description: 'Renvoie les métadonnées de la thèse correspondant à un NNT (identifiant), au format XML (TEF) ou RDF'
+      description: |-
+        Renvoie les métadonnées de la thèse correspondant à un NNT (identifiant national des thèses soutenues) ou à un numsujet(identifiant d'un sujet de thèse en préparation), au format XML (TEF) ou RDF
+
+        <a href="http://documentation.abes.fr/aidetheses/thesesfr/index.html#RecupererDonneesPageThese" target=_blank>Lien vers la documentation</a>
+
+        Exemple :
+
+        http://www.theses.fr/s237033
+
+        http://www.theses.fr/2007PA112182
+
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       parameters:
         - $ref: '#/components/parameters/Accept'
-  '/{numSujet}':
+  '/{NNT_ou_numSujet}.rdf':
     parameters:
-      - $ref: '#/components/parameters/numSujet'
-    get:
-      summary: ''
-      tags: []
-      responses: {}
-      operationId: get-numSujet
-      description: 'Renvoie les métadonnées du sujet de thèse en préparation correspondant à un numSujet (identifiant), au format XML (TEF) ou RDF'
-      parameters:
-        - $ref: '#/components/parameters/Accept'
-  '/{NNT}.rdf':
-    parameters:
-      - $ref: '#/components/parameters/NNT'
+      - $ref: '#/components/parameters/NNT_ou_numSujet'
     get:
       summary: ''
       tags: []
@@ -65,10 +75,21 @@ paths:
         '404':
           description: Not Found
       operationId: get-NNT-.rdf
-      description: 'Renvoie les métadonnées de la thèse correspondant à un NNT (identifiant), au format RDF'
-  '/{NNT}.xml':
+      description: |-
+        Renvoie les métadonnées de la thèse correspondant à un NNT (thèse soutenue) ou à un numSujet (thèse en cours), au format RDF
+
+        <a href="http://documentation.abes.fr/aidetheses/thesesfr/index.html#RecupererDonneesPageThese" target=_blank>Lien vers la documentation</a>
+
+        Exemple :
+
+        http://www.theses.fr/s237033.rdf
+
+        http://www.theses.fr/2007PA112182.rdf
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+  '/{NNT_ou_numSujet}.xml':
     parameters:
-      - $ref: '#/components/parameters/NNT'
+      - $ref: '#/components/parameters/NNT_ou_numSujet'
     get:
       summary: ''
       tags: []
@@ -78,10 +99,28 @@ paths:
         '404':
           description: Not Found
       operationId: get-NNT-.xml
-      description: 'Renvoie les métadonnées de la thèse correspondant à un NNT (identifiant), au format XML (TEF)'
+      description: |-
+        Renvoie les métadonnées de la thèse correspondant à un NNT (identifiant d'une thèse soutenue) ou à un numSujet(identifiant d'une thèse en préparation), au format XML (TEF)
+
+        Exemple :
+
+        http://www.theses.fr/s237033.xml
+
+        http://www.theses.fr/2007PA112182.xml
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
   '/{NNT}.ris':
     parameters:
-      - $ref: '#/components/parameters/NNT'
+      - name: NNT
+        in: path
+        schema:
+          type: string
+          pattern: '\d{4}[A-Z]{2}[0-9A-Z]{2}[0-9A-Z]{4}'
+          minLength: 12
+          maxLength: 12
+          example: 2018LAROS028
+        description: Numéro National de Thèse
+        required: true
     get:
       summary: ''
       tags: []
@@ -91,10 +130,21 @@ paths:
         '404':
           description: Not Found
       operationId: get-NNT-.ris
-      description: 'Renvoie les métadonnées de la thèse correspondant à un NNT (identifiant), au format RIS'
-  '/{NNT}.bib':
+      description: |-
+        Renvoie les métadonnées de la thèse correspondant à un NNT (identifiant), au format RIS
+
+        Exemple :
+
+        http://www.theses.fr/2007PA112182.ris
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+  '/{NNT_ou_numSujet}.bib':
     parameters:
-      - $ref: '#/components/parameters/NNT'
+      - schema:
+          type: string
+        name: NNT_ou_numSujet
+        in: path
+        required: true
     get:
       summary: ''
       tags: []
@@ -105,58 +155,6 @@ paths:
           description: Not Found
       operationId: get-NNT-.bib
       description: 'Renvoie les métadonnées de la thèse correspondant à un NNT (identifiant), au format BibTeX'
-  '/{numSujet}.rdf':
-    parameters:
-      - $ref: '#/components/parameters/numSujet'
-    get:
-      summary: ''
-      tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not Found
-      operationId: get-numSujet-.rdf
-      description: 'Renvoie les métadonnées du sujet de thèse en préparation correspondant à un numSujet (identifiant), au format RDF'
-  '/{numSujet}.xml':
-    parameters:
-      - $ref: '#/components/parameters/numSujet'
-    get:
-      summary: ''
-      tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not Found
-      operationId: get-numSujet-.xml
-      description: 'Renvoie les métadonnées du sujet de thèse en préparation correspondant à un numSujet (identifiant), au format XML (TEF)'
-  '/{numSujet}.ris':
-    parameters:
-      - $ref: '#/components/parameters/numSujet'
-    get:
-      summary: ''
-      tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not Found
-      operationId: get-numSujet-.ris
-      description: 'Renvoie les métadonnées du sujet de thèse en préparation correspondant à un numSujet (identifiant), au format RIS'
-  '/{numSujet}.bib':
-    parameters:
-      - $ref: '#/components/parameters/numSujet'
-    get:
-      summary: ''
-      tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not Found
-      operationId: get-numSujet-.bib
-      description: 'Renvoie les métadonnées du sujet de thèse en préparation correspondant à un numSujet (identifiant), au format BiTeX'
   /fr/:
     get:
       summary: ''
@@ -240,29 +238,21 @@ paths:
           in: query
           name: facet.field
           description: Index sur lequel avoir les facettes
+      x-internal: true
 components:
   schemas: {}
   parameters:
     NNT:
       name: NNT
       in: path
-      required: true
       schema:
         type: string
-        pattern: 'd{4}[A-Z]{2}[0-9A-Z]{2}[0-9A-Z]{4}'
+        pattern: '\d{4}[A-Z]{2}[0-9A-Z]{2}[0-9A-Z]{4}'
         minLength: 12
         maxLength: 12
         example: 2018LAROS028
       description: Numéro National de Thèse
-    numSujet:
-      name: numSujet
-      in: path
       required: true
-      schema:
-        type: string
-        pattern: s\d*
-        example: s279863
-      description: Numéro de sujet de thèse en préparation
     Accept:
       name: Accept
       in: header
@@ -274,3 +264,13 @@ components:
           - application/rdf+xml
         example: application/xml
       description: 'Format demandé (XML, RDF)'
+    NNT_ou_numSujet:
+      name: NNT_ou_numSujet
+      in: path
+      schema:
+        type: string
+        example: 2007PA112182
+        pattern: '(\d{4}[A-Z]{2}[0-9A-Z]{6})|(s\d{1,7})'
+      description: Identifiant d'une thèse soutenue (NNT) ou en cours (numSujet)
+      required: true
+  securitySchemes: {}
