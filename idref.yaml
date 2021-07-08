@@ -9,144 +9,11 @@ info:
     email: idref@abes.fr
   termsOfService: 'https://www.idref.fr/cgu.jsp'
   license:
-    name: CeCILL
-    url: 'https://cecill.info/index.en.html'
+    name: Licence Ouverte Etalab
+    url: 'https://www.etalab.gouv.fr/licence-ouverte-open-licence'
 servers:
   - url: 'https://www.idref.fr'
 paths:
-  '/{PPN}':
-    parameters:
-      - $ref: '#/components/parameters/PPN'
-    get:
-      tags: []
-      responses:
-        '200':
-          description: OK
-          headers:
-            'content-type: application/rdf+xml;charset=UTF-8':
-              schema:
-                type: string
-        '404':
-          description: Not Found
-      operationId: get-PPN
-      parameters:
-        - schema:
-            type: string
-            example: application/xml
-            enum:
-              - application/xml
-              - application/rdf+xml
-          in: header
-          name: Accept
-          description: Format demandé
-      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), en MarcXML ou RDF, selon le header HTTP Accept'
-  '/{PPN}.xml':
-    parameters:
-      - $ref: '#/components/parameters/PPN'
-    get:
-      tags: []
-      responses:
-        '200':
-          description: OK
-          headers: {}
-        '404':
-          description: Not found
-      operationId: get-PPN-.xml
-      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), au format XML'
-      x-internal: false
-      parameters: []
-  '/{PPN}.rdf':
-    parameters:
-      - $ref: '#/components/parameters/PPN'
-    get:
-      tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not found
-      operationId: get-PPN-.rdf
-      description: 'Renvoie une notice d''autorité correspondant à un PPN (identifiant), au format XML'
-  '/services/biblio/{PPN}':
-    parameters:
-      - $ref: '#/components/parameters/PPN'
-    get:
-      tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not Found
-      operationId: get-services-biblio-PPN
-      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l''header HTTP ou en suffixant avec .json)'
-      parameters:
-        - $ref: '#/components/parameters/Accept'
-  '/services/biblio/{PPN}.xml':
-    parameters:
-      - $ref: '#/components/parameters/PPN'
-    get:
-      tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not Found
-      operationId: get-services-biblio-PPN-.xml
-      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant), en MarcXML'
-  '/services/biblio/{PPN}.json':
-    parameters:
-      - $ref: '#/components/parameters/PPN'
-    get:
-      tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not Found
-      operationId: get-services-biblio-PPN-.json
-      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant), en JSON'
-  '/services/references/{PPN}':
-    parameters:
-      - $ref: '#/components/parameters/PPN'
-    get:
-      tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not Found
-      operationId: get-services-references-PPN
-      description: 'Renvoie la liste des références bibliographiques, liées à une notice d''autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l''header HTTP ou en suffixant avec .json)'
-      parameters:
-        - $ref: '#/components/parameters/Accept'
-  '/services/references/{PPN}.xml':
-    parameters:
-      - $ref: '#/components/parameters/PPN'
-    get:
-      tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not Found
-      operationId: get-services-references-PPN-.xml
-      description: 'Renvoie la liste des références bibliographiques, liées à une notice d''autorité correspondant à un PPN (identifiant), en MarcXML'
-  '/services/references/{PPN}.json':
-    parameters:
-      - schema:
-          type: string
-        name: PPN
-        in: path
-        required: true
-    get:
-      tags: []
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not Found
-      operationId: get-services-references-PPN-.json
-      description: 'Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d''autorité correspondant à un PPN (identifiant), en JSON'
   /Sru/Solr:
     get:
       summary: ''
@@ -160,6 +27,16 @@ paths:
       description: |-
         Renvoie les informations sur les notices d'autorités du Système Universitaire de Documentation (Sudoc). 
         Il s'agit d'une API Solr 1.41 : https://svn.apache.org/repos/asf/lucene/solr/tags/release-1.4.1/site/tutorial.html#Querying+Data
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#UtiliserApiSolr" target=_blank>Lien vers la documentation</a>
+
+        Exemples :
+
+        <a href="https://www.idref.fr/Sru/Solr?q=persname_t:(Bourdieu AND Pierre)&sort=score%20desc&version=2.2&start=0&rows=30&indent=on&fl=id,ppn_z,recordtype_z,affcourt_z" target=_blank>Exemple 1</a>
+
+        <a href="https://www.idref.fr/Sru/Solr?q=persname_t:pepin&sort=score%20desc&version=2.2&start=0&rows=30&indent=on&fl=id,ppn_z,recordtype_z,affcourt_z" target=_blank>Exemple 2</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
       parameters:
         - schema:
             type: string
@@ -216,6 +93,341 @@ paths:
           in: query
           name: facet.field
           description: Index sur lequel avoir les facettes
+  '/{PPN}':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            'content-type: application/rdf+xml;charset=UTF-8':
+              schema:
+                type: string
+        '404':
+          description: Not Found
+      operationId: get-PPN
+      parameters:
+        - schema:
+            type: string
+            example: application/xml
+            enum:
+              - application/xml
+              - application/rdf+xml
+          in: header
+          name: Accept
+          description: Format demandé
+      description: |-
+        Renvoie une notice d'autorité correspondant à un PPN (identifiant), en MarcXML ou RDF, selon le header HTTP Accept
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#FormatRdf" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/027182800
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+  '/{PPN}.xml':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers: {}
+        '404':
+          description: Not found
+      operationId: get-PPN-.xml
+      description: |-
+        Renvoie une notice d'autorité correspondant à un PPN (identifiant), au format XML
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#format" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/027182800.xml
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+      x-internal: false
+      parameters: []
+  '/{PPN}.rdf':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not found
+      operationId: get-PPN-.rdf
+      description: |-
+        Renvoie une notice d'autorité correspondant à un PPN (identifiant), au format RDF
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#FormatRdf" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/027182800.rdf
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+  '/services/biblio/{PPN}':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-biblio-PPN
+      description: |-
+        Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d'autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l'header HTTP ou en suffixant avec .json)
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebBiblio" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/services/biblio/027182800
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+      parameters:
+        - $ref: '#/components/parameters/Accept'
+  '/services/biblio/{PPN}.xml':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-biblio-PPN-.xml
+      description: |-
+        Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d'autorité correspondant à un PPN (identifiant), en MarcXML
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebBiblio" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/services/biblio/027182800.xml
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+  '/services/biblio/{PPN}.json':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-biblio-PPN-.json
+      description: |-
+        Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d'autorité correspondant à un PPN (identifiant), en JSON
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebBiblio" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/services/biblio/027182800.json
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+  '/services/references/{PPN}':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-references-PPN
+      description: |-
+        Renvoie la liste des références bibliographiques, liées à une notice d'autorité correspondant à un PPN (identifiant). Le format par défaut est MarcXML, mais on peut demander du JSON (par l'header HTTP ou en suffixant avec .json)
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebReferences" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/services/references/02686018X
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+      parameters:
+        - $ref: '#/components/parameters/Accept'
+  '/services/references/{PPN}.xml':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-references-PPN-.xml
+      description: |-
+        Renvoie la liste des références bibliographiques, liées à une notice d'autorité correspondant à un PPN (identifiant), en MarcXML
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebReferences" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/services/references/02686018X.xml
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+  '/services/references/{PPN}.json':
+    parameters:
+      - schema:
+          type: string
+        name: PPN
+        in: path
+        required: true
+    get:
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-references-PPN-.json
+      description: |-
+        Renvoie la liste des références bibliographiques du Sudoc, liées à une notice d'autorité correspondant à un PPN (identifiant), en JSON
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebReferences" target=_blank>Lien vers la documentation</a>
+
+        Exemple:
+
+        https://www.idref.fr/services/references/02686018X.json
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+  /services/listrcrisil:
+    get:
+      summary: ''
+      tags: []
+      operationId: get-services-listisil
+      description: |-
+        Le webservice listrcrisil illustre l'activité de l'Abes en tant qu'agence nationale d'attribution des ISIL (International Standard for Library Identifiers) : il renvoie un fichier excel (.xls) avec la liste de tous les identifiants actifs pour les bibliothèques françaises.
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#listrcr" target=_blank>Lien vers la documentation</a>
+
+        Le numéro ISIL est construit sur le numéro RCR, précédé du préfixe « FR-».
+
+        Le fichier csv comporte : n°RCR, n°ISIL, intitulé court de la bibliothèque.
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+    parameters: []
+  /services/listrcr:
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-listrcr
+      description: |-
+        Le Webservice listrcr renvoie dans un fichier excel (.xls) la liste des RCR actifs ayant une notice RCR (autorité-centre de ressources) : il permet d'établir les correspondances entre les n° RCR (identifiant d'une bibliothèque physique) et les intitulés des établissements membres des réseaux Sudoc / Sudoc PS
+        Le fichier comporte : n°RCR, intitulé court de la bibliothèque, ILN de rattachement, n°PPN de la notice de centre de ressources.
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#listrcr" target=_blank>Lien vers la documentation</a>
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+  '/services/idref2id/{PPN}':
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-idref2id
+      description: |-
+        A partir d'un PPN de personne ou de collectivité : obtenir la liste des identifiants d'autres systèmes alignés (BnF, Hal,Orcid,Viaf,Isni,etc.)
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebIdref2id" target=_blank>Lien vers la documentation</a>
+
+        Exemples :
+
+        https://www.idref.fr/services/idref2id/027715078
+        https://www.idref.fr/services/idref2id/159123984,027715078,139753753
+
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+      parameters:
+        - $ref: '#/components/parameters/Accept'
+        - $ref: '#/components/parameters/format'
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+  '/services/id2idref/{ID}':
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-id2idref
+      description: |-
+        A partir de l'identifiant d'une personne ou d'une collectivité dans un autre système (BnF, Hal,Orcid,Viaf,Isni,etc.) : obtenir le numéro PPN associé.
+
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWeb_ServiceId2idref" target=_blank>Lien vers la documentation</a>
+
+        Exemples:
+
+        https://www.idref.fr/services/id2idref/http://viaf.org/viaf/71387829
+        https://www.idref.fr/services/id2idref/https://fr.wikipedia.org/wiki/Pierre_Bourdieu,000000024000807X
+
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+      parameters:
+        - $ref: ./sudoc.yaml#/components/parameters/Accept
+        - $ref: '#/components/parameters/format'
+    parameters:
+      - $ref: '#/components/parameters/ID'
+  '/services/iln2rcr/{ILN}':
+    parameters:
+      - $ref: '#/components/parameters/ILN'
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+      operationId: get-services-iln2rcr-ILN
+      description: |
+        A partir du numéro ILN identifiant un établissement, obtenir la liste de ses bibliothèques (RCR) partageant le même SIGB (Système Intégré de Gestion des Bibliothèques).
+
+
+        <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWebIln2rcr" target=_blank>Lien vers la documentation</a>
+
+        Exemples:
+
+        https://www.idref.fr/services/iln2rcr/4 
+        https://www.idref.fr/services/iln2rcr/4,8
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
+      parameters:
+        - $ref: '#/components/parameters/Accept'
+        - $ref: '#/components/parameters/format'
 components:
   schemas: {}
   securitySchemes: {}
@@ -244,3 +456,29 @@ components:
           - text/json
         example: application/xml
       description: 'Format demandé (XML, JSON)'
+    format:
+      name: format
+      in: query
+      required: false
+      schema:
+        type: string
+        enum:
+          - text/json
+      description: Format demandé
+    ID:
+      name: ID
+      in: path
+      required: true
+      schema:
+        type: string
+      description: 'Identifiant de personne ou de collectivité dans d''autres référentiels (BnF,Hal,Orcid,Viaf,etc.)'
+    ILN:
+      name: ILN
+      in: path
+      required: true
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 3
+        pattern: '[0-9]{1,3}'
+      description: identifiant unique d’un établissement participant au réseau du Sudoc. Un ILN peut englober un ou plusieurs RCR
