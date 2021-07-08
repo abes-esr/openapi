@@ -169,7 +169,7 @@ paths:
         Renvoie les informations sur les thèses de doctorat françaises. 
         Il s'agit d'une API Solr 1.41 proxifiée : le paramètre "wt" est remplacé par "format" et accepte csv et atom, comme formats supplémentaires.
 
-        Doc API Solr 1.41 : https://svn.apache.org/repos/asf/lucene/solr/tags/release-1.4.1/site/tutorial.html#Querying+Data 
+        <a href="https://svn.apache.org/repos/asf/lucene/solr/tags/release-1.4.1/site/tutorial.html#Querying+Data" target="_blank">Doc API Solr 1.41</a> 
       parameters:
         - schema:
             type: string
