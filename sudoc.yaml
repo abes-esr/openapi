@@ -371,7 +371,7 @@ paths:
       operationId: get-services-metaperiodical-PPN
       description: |-
         Le webservice génère l'historique complet - électronique et papier - d'une revue à partir d'un PPN.
-        <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#metarevues" target=_blank>Lien vers la documentation</a>
+        <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#metarevues)" target=_blank>Lien vers la documentation</a>
 
         format de sortie : csv
 
@@ -437,6 +437,32 @@ paths:
       parameters:
         - $ref: '#/components/parameters/format'
         - $ref: '#/components/parameters/Accept'
+  '/services/marcxml2tei/{PPN}':
+    parameters:
+      - $ref: '#/components/parameters/PPN'
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '500':
+          description: Internal Server Error
+      operationId: get-services-marcxml2tei-PPN
+      description: |-
+        Ce service renvoie en format TEI (profil AOFR https://hal.archives-ouvertes.fr/documents/aofr.xsd) une notice bibliographique de mémoire ou autre travail universitaire --à l'exeption des thèses de doctorat-- présent dans le Sudoc.
+
+
+
+        <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#marcXml2tei" target="_blank">Lien vers la documentation</a>
+
+        Exemple :
+
+        https://www.sudoc.fr/services/marcxml2tei/147689236
+
+        Seules les notices conformes aux règles de catalogage des [travaux universitaires hors thèses](http://documentation.abes.fr/sudoc/regles/Catalogage/Regles_Theses_AutresDocsUniv.htm) peuvent être transformées au format TEI.
+
+        Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
 components:
   schemas: {}
   parameters:
