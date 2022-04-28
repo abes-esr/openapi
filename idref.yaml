@@ -341,7 +341,7 @@ paths:
       operationId: get-services-listrcr
       description: |-
         Le Webservice listrcr renvoie dans un fichier excel (.xls) la liste des RCR actifs ayant une notice RCR (autorité-centre de ressources) : il permet d'établir les correspondances entre les n° RCR (identifiant d'une bibliothèque physique) et les intitulés des établissements membres des réseaux Sudoc / Sudoc PS
-        Le fichier comporte : n°RCR, intitulé court de la bibliothèque, ILN de rattachement, n°PPN de la notice de centre de ressources.
+        Le fichier comporte : n°RCR, intitulé court de la bibliothèque, ILN de rattachement, n°PPN de la notice de centre de ressources, adresse courriel, adresse physique, adresse postale, complément d'adresse, lieu-dit, ville, cedex, code postal, pays.
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#listrcr" target=_blank>Lien vers la documentation</a>
 
