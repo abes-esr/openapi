@@ -429,8 +429,7 @@ paths:
         - $ref: '#/components/parameters/Accept'
         - $ref: '#/components/parameters/format'
 components:
-  schemas: {}
-  securitySchemes: {}
+  schemas: {}  
   parameters:
     PPN:
       name: PPN
