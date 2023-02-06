@@ -30,6 +30,10 @@ paths:
         Il peut, par exemple, être appelé pour vérifier si des bouquets ont été créés ou mis à jour.
 
         Format par défaut : XML. Utiliser Header HTTP Accept pour demander du JSON.
+        
+        <a href="https://status-api.abes.fr/783159545" target=_blank>Voir la disponibilité du service</a>
+        
+        <ahttps://status-api.abes.fr/783159545
       parameters:
         - schema:
             type: string
@@ -56,6 +60,8 @@ paths:
         Le webservice package2kbart permet de remonter l'ensemble des lignes d'un fichier KBART donné.
 
         Utiliser le header HTTP Accept pour obtenir le format CSV (par défaut), XML ou JSON
+        
+        <a href="https://status-api.abes.fr/792634071" target=_blank>Voir la disponibilité du service</a>
       parameters:
         - schema:
             type: string
@@ -85,6 +91,8 @@ paths:
         Le webservice id2kbart permet de connaître l'ensemble des packages où figure un périodique ou un livre donné en fonction de son identifiant (ISSN ou ISBN, version « papier » ou version électronique) et remonte l'ensemble des informations KBART correspondantes.
 
         Format XML (par défaut) ou JSON
+        
+        <a href="https://status-api.abes.fr/792634082" target=_blank>Voir la disponibilité du service</a>
       parameters:
         - schema:
             type: string
@@ -111,6 +119,8 @@ paths:
         Le webservice list renvoie l'ensemble des bouquets, appelés aussi packages, présents dans BACON.
 
         Il peut, par exemple, être appelé pour vérifier si des bouquets ont été créés ou mis à jour.
+        
+        <a href="https://status-api.abes.fr/783159545" target=_blank>Voir la disponibilité du service</a>
 
         Format : JSON
   /list.xml:
