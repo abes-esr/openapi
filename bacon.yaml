@@ -31,9 +31,8 @@ paths:
 
         Format par défaut : XML. Utiliser Header HTTP Accept pour demander du JSON.
         
-        <a href="https://status-api.abes.fr/783159545" target=_blank>Voir la disponibilité du service</a>
+        <a href="https://status-api.abes.fr/783159545" target="_blank">Voir la disponibilité du service</a>
         
-        <ahttps://status-api.abes.fr/783159545
       parameters:
         - schema:
             type: string
