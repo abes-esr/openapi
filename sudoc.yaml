@@ -66,7 +66,8 @@ paths:
         <a href="http://documentation.abes.fr/sudoc/manuels/administration/sudoc_rdf/index.html#AccederDonneesRdf" target=_blank>Lien vers la documentation du RDF</a>
 
         <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#SudocMarcXML" target=_blank>Lien vers la documentation du XML</a>
-
+        
+         <a href="https://status-api.abes.fr/792633984" target=_blank>Voir la disponibilité du service</a>
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
 
@@ -89,6 +90,7 @@ paths:
 
         <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#SudocMarcXML" target=_blank>Lien vers la documentation</a>
 
+        <a href="https://status-api.abes.fr/782344734" target=_blank>Voir la disponibilité du service</a>
 
         Données disponibles sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence" target=_blank>Licence Ouverte / Open Licence de l’État élaborée par la mission Etalab</a>. La récupération et la réutilisation des données est libre et gratuite sous réserve de l’indication de leur date de récupération et de la mention de leur source.
         Il convient donc de conserver les Subfield b et c de la zone 801. 
@@ -177,6 +179,8 @@ paths:
       operationId: get-services-ean2ppn-EAN
       description: |-
         Ce webservice renvoie un identifiant de notice bibliographique (PPN) à partir d'un EAN valide
+        
+        <a href="https://status-api.abes.fr/792634142" target=_blank>Voir la disponibilité du service</a>
 
         <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#ean2ppn" target=_blank>Lien vers la documentation</a>
 
@@ -202,6 +206,8 @@ paths:
       operationId: get-services-frbn2ppn
       description: |-
         Ce webservice renvoie le PPN (identifiant d'une notice bibliographique dans le Sudoc) correspondant à une notice de la BnF (FRBNF).
+        
+        <a href="https://status-api.abes.fr/792634158" target=_blank>Voir la disponibilité du service</a>
 
         <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#MicroWebServiceFrbn2ppn" target=_blank>Lien vers la documentation</a>
 
@@ -230,6 +236,8 @@ paths:
       description: |-
         Ce webservice renvoie le PPN (identifiant d'une notice bibliographique dans le Sudoc) correspondant à une notice de la Deutsche Nationalbibliothek (DNB).
 
+        <a href="https://status-api.abes.fr/792634133" target=_blank>Voir la disponibilité du service</a>
+        
         <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#MicroWebServiceDnb2ppn" target=_blank>Lien vers la documentation</a>
 
         Exemples:
@@ -341,6 +349,8 @@ paths:
       description: |-
         Ce webservice permet de localiser les bibliothèques et centres de ressources (RCR de Localisation) possédant un exemplaire d'un --ou plusieurs-- document(s), à partir de l'identifiant de la notice bibliographique (PPN)
 
+        <a href="https://status-api.abes.fr/782344736" target=_blank>Voir la disponibilité du service</a>
+        
         <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#multiwhere" target=_blank>Lien vers la documentation</a>
 
 
@@ -423,6 +433,8 @@ paths:
       operationId: get-services-pcp2rcr-PCP
       description: |-
         Ce webservice renvoie la liste des bibliothèques (RCR) qui participent à un Plan de Conservation Partagée des Périodiques.
+        
+        <a href="https://status-api.abes.fr/782344732" target=_blank>Voir la disponibilité du service</a>
 
         <a href="http://documentation.abes.fr/sudoc/manuels/administration/aidewebservices/index.html#WebservicePCP2RCR" target=_blank>Lien vers la documentation</a>
 

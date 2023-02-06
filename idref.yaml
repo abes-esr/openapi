@@ -142,6 +142,8 @@ paths:
       operationId: get-PPN-.xml
       description: |-
         Renvoie une notice d'autorité correspondant à un PPN (identifiant), au format XML
+        
+        <a href="https://status-api.abes.fr/783699576" target=_blank>Voir la disponibilité du service</a>
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#format" target=_blank>Lien vers la documentation</a>
 
@@ -165,6 +167,8 @@ paths:
       operationId: get-PPN-.rdf
       description: |-
         Renvoie une notice d'autorité correspondant à un PPN (identifiant), au format RDF
+        
+        <a href="https://status-api.abes.fr/783699580" target=_blank>Voir la disponibilité du service</a>
 
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#FormatRdf" target=_blank>Lien vers la documentation</a>
 
@@ -386,7 +390,8 @@ paths:
       description: |-
         A partir de l'identifiant d'une personne ou d'une collectivité dans un autre système (BnF, Hal,Orcid,Viaf,Isni,etc.) : obtenir le numéro PPN associé.
 
-
+        <a href="https://status-api.abes.fr/786474654" target=_blank>Voir la disponibilité du service</a>
+        
         <a href="http://documentation.abes.fr/aideidrefdeveloppeur/index.html#MicroWeb_ServiceId2idref" target=_blank>Lien vers la documentation</a>
 
         Exemples:
